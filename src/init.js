@@ -7,7 +7,6 @@ export function initMixin(Vue) {
 
        // 初始化状态
        initState(vm)
-       // TODO...
     }
 }
 
