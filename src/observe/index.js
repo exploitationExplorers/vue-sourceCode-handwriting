@@ -13,7 +13,6 @@ class Observer {
 }
 
 export function defineReactive(target, key, value) { //闭包
-    console.log(value,'value');
     observe(value) // value 可能是个对象，对所有对象都进行属性劫持
     Object.defineProperty(target,key, {    // 属性劫持
         get() {
@@ -24,6 +23,8 @@ export function defineReactive(target, key, value) { //闭包
         set(newValue) {
             console.log('设置值');
             if (newValue === value) return
+            // 如果设置的值是个对象，那么需要劫持这个对象
+            observe(newValue)
             value = newValue
         }
     })
